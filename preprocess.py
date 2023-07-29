@@ -20,8 +20,8 @@ def extract_imgs_feat():
 
     if not os.path.exists(opt.out_feats_dir):
         os.makedirs(opt.out_feats_dir)
-    with h5py.File(os.path.join(opt.out_feats_dir, '%s_fc.h5' % opt.dataset_name)) as file_fc, \
-            h5py.File(os.path.join(opt.out_feats_dir, '%s_att.h5' % opt.dataset_name)) as file_att:
+    with h5py.File(os.path.join(opt.out_feats_dir, '%s_fc.h5' % opt.dataset_name) , 'w') as file_fc, \
+            h5py.File(os.path.join(opt.out_feats_dir, '%s_att.h5' % opt.dataset_name) , 'w') as file_att:
         try:
             for img_nm in tqdm.tqdm(imgs, ncols=100):
                 img = skimage.io.imread(os.path.join(opt.imgs_dir, img_nm))
